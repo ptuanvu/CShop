@@ -1,0 +1,61 @@
+<div flex="grow" layout="row" layout-align="center center">
+  <div flex="50" layout="column" >
+    <div layout="row" layout-align="center top">
+      <h2>THÊM SẢN PHẨM</h2>
+    </div>
+    <div layout="row" layout-align="center top">
+      <md-card flex class="md-inline-form" layout-fill>
+        <form class="product-editable-form">
+          <md-input-container class="md-block">
+            <label>Tên sản phẩm</label>
+            <input ng-model="product.name">
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Giá bán (VNĐ)</label>
+            <input type="number" ng-model="product.price">
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Bảo hành (Tháng)</label>
+            <input type="number" ng-model="product.bh">
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Số lượng (cái)</label>
+            <input type="number" ng-model="product.number">
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Khuyến mãi</label>
+            <input ng-model="product.km">
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Thông số kỹ thuật</label>
+        <textarea class="product-input-detail" ng-model="product.detail" md-maxlength="500" rows="5" md-select-on-focus>
+
+        </textarea>
+          </md-input-container>
+
+          <label>Hình ảnh: </label>
+          <md-input-container class="md-block">
+
+            <input type="file" ng-model="user.address">
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <div layout="row" layout-align="center end">
+              <md-button flex="50" class="md-raised md-primary">Thêm sản phẩm</md-button>
+              <md-button flex="50" class="md-raised md-primary">Trở về</md-button>
+            </div>
+
+          </md-input-container>
+
+        </form>
+      </md-card>
+    </div>
+
+  </div>
+
+</div>

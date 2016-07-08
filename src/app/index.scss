@@ -1,0 +1,275 @@
+/**
+ *  Do not remove the comment below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'),
+       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+html {
+  font-family: 'Roboto Slab', serif;
+}
+
+[layout=row] {
+  flex-direction: row;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+md-toolbar.md-default-theme {
+  background-color: black;
+}
+
+section.jumbotron {
+  margin-bottom: 30px;
+  padding: 1px 30px;
+  background-color: #5aadbb;
+  text-align: center;
+
+  color: white;
+
+  h1 {
+    font-size: 3em;
+  }
+}
+
+.techs {
+  display: flex;
+  flex-flow: row wrap;
+
+  md-card {
+    width: 30%;
+
+    img.pull-right {
+      float: right;
+      width: 100px;
+    }
+  }
+}
+
+@media (min-width: 240px) {
+  .home-preview-image {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  .home-preview-title {
+    font-size: 14px !important;
+  }
+  .home-preview-subtitle {
+    font-size: 12px !important;
+  }
+  .home-preview-cart {
+    width: 15px !important;
+    height: 15px !important;
+    display: block;
+  }
+  .home-preview-cart-button {
+    width: 23px !important;
+    height: 23px !important;
+    min-height: 18px !important;
+  }
+  .home-preview-chooser {
+    width: 110px !important;
+  }
+}
+
+@media (min-width: 660px) {
+  .home-preview-image {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  .home-preview-title {
+    font-size: 14px !important;
+  }
+  .home-preview-subtitle {
+    font-size: 14px !important;
+  }
+  .home-preview-cart-button {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  .home-preview-chooser {
+    width: 150px !important;
+  }
+
+}
+
+@media (min-width: 960px) {
+  .home-preview-image {
+    width: 160px !important;
+    height: 160px !important;
+  }
+  .home-preview-title {
+    font-size: 16px !important;
+  }
+  .home-preview-subtitle {
+    font-size: 16px !important;
+  }
+  .home-preview-cart {
+    width: 20px !important;
+    height: 20px !important;
+    display: block;
+  }
+  .home-preview-cart-button {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .home-preview-chooser {
+    width: 150px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .home-preview-image {
+    width: 240px !important;
+    height: 240px !important;
+  }
+  .home-preview-title {
+    font-size: 24px !important;
+  }
+  .home-preview-subtitle {
+    font-size: 18px !important;
+  }
+  .home-preview-cart {
+    width: 20px !important;
+    height: 20px !important;
+    display: block;
+  }
+  .home-preview-cart-button {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .home-preview-chooser {
+    width: 200px !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .home-preview-image {
+    width: 240px !important;
+    height: 240px !important;
+  }
+  .home-preview-title {
+    font-size: 24px !important;
+  }
+  .home-preview-subtitle {
+    font-size: 18px !important;
+  }
+  .home-preview-cart {
+    width: 20px !important;
+    height: 20px !important;
+    display: block;
+  }
+  .home-preview-cart-button {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .home-preview-chooser {
+    width: 200px !important;
+  }
+}
+
+.product-editable-form {
+  padding: 15px;
+}
+.demo-legend {
+  color: #3F51B5; }
+.demo-fieldset {
+  border-style: solid;
+  border-width: 1px;
+  height: 100%; }
+.demo-select-all-checkboxes {
+  padding-left: 30px; }
+.md-errors-spacer {
+  display: none !important;
+}
+
+.san-pham-hot {
+  background-color: #3EBA2B !important;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: large;
+}
+
+.san-pham-moi {
+  background-color: #007FB1 !important;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: large;
+}
+
+.san-pham {
+  background-color: #3261AB !important;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: large;
+}
+
+.san-pham-sale-off {
+  background-color: #EDAD0B !important;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: large;
+}
+
+.product-input-detail {
+  height: 100px !important;
+}
+.groupX {
+  width: 100px !important;
+}
+
+.page-content {
+  display: block;
+}
+
+/**
+ *  Do not remove the comment below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
