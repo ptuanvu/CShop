@@ -11,7 +11,7 @@
   /** @ngInject */
   function IndexController($location) {
     var vm = this;
-
+    vm.types = ['Over Ear', 'In Ear', 'Ear Bud', 'Clip On'];
     vm.openMenu = function($mdOpenMenu, ev) {
 
       $mdOpenMenu(ev);

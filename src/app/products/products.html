@@ -1,9 +1,11 @@
 <div flex="grow" layout="row" layout-align="center center">
+
+
+
   <div flex="50" layout="column" >
     <div layout="row" layout-align="center top">
       <h2>THÊM SẢN PHẨM</h2>
     </div>
-
 
     <div layout="row" layout-align="center top">
       <md-card flex class="md-inline-form" layout-fill>
@@ -27,28 +29,28 @@
           </md-input-container>
 
           <md-input-container class="md-block">
-            <label>Giá bán (VNĐ)</label>
-            <input type="number" ng-model="pr.product.price" required>
+            <label>Giá bán (VNĐ) (>1000 VNĐ)</label>
+            <input type="number" ng-model="pr.product.price" min="1000" max="1000000000" required>
           </md-input-container>
 
           <md-input-container class="md-block">
             <label>Bảo hành (Tháng)</label>
-            <input type="number" ng-model="pr.product.bh" required>
+            <input type="number" ng-model="pr.product.bh" min="0" max="78" required>
           </md-input-container>
 
           <md-input-container class="md-block">
             <label>Số lượng (cái)</label>
-            <input type="number" ng-model="pr.product.number" required>
+            <input type="number" ng-model="pr.product.number" min="0" max="10000" required>
           </md-input-container>
 
           <md-input-container class="md-block">
             <label>Khuyến mãi (%)</label>
-            <input type="number" ng-model="pr.product.km" required>
+            <input type="number" ng-model="pr.product.km" min="0" max="100" required>
           </md-input-container>
 
           <md-input-container class="md-block">
             <label>Thông số kỹ thuật</label>
-        <textarea class="product-input-detail" ng-model="pr.product.detail" md-maxlength="500" rows="5" md-select-on-focus required>
+        <textarea class="product-input-detail" ng-model="pr.product.detail"  rows="5" md-select-on-focus required>
 
         </textarea>
           </md-input-container>
@@ -56,7 +58,7 @@
           <label>Hình ảnh: </label>
           <div flex layout="row">
             <md-card flex="30" layout="row" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-repeat="image in pr.images">
-              <div layout="column" layout-align="center center" class="md-media-sm card-media"><img class="md-media-sm card-media" src="{{image.url}}"></div>
+              <div layout="column"  layout-align="center center" class="md-media-sm card-media"><img class="md-media-sm card-media" ng-src="{{image.url}}"></div>
               <div layout="column" layout-align="center center">
                 <md-button ng-click="pr.deleteByName($index, image)" class="md-icon-button" aria-label="Delete">
                   <md-icon md-svg-icon="../../assets/images/ic_delete_black_24px.svg"></md-icon>
@@ -65,7 +67,7 @@
             </md-card>
           </div>
           <md-input-container class="md-block">
-            <input type="file" id="file" name="file" required>
+            <input type="file" id="file" name="file" accept="image/*" required>
           </md-input-container>
 
           <md-input-container class="md-block">

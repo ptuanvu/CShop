@@ -1,0 +1,81 @@
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Thêm sản phẩm</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-input-container class="md-block">
+          <label>Tên sản phẩm</label>
+          <input ng-model="pr.product.name">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Nhà sản xuất:</label>
+          <input ng-model="pr.product.nsx" required>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Loại sản phẩm:</label>
+          <md-select ng-model="pr.product.type" required>
+            <md-option ng-repeat="type in pr.types" value="{{type}}">{{type}}</md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Giá bán (VNĐ) (>1000)</label>
+          <input type="number" ng-model="pr.product.price" min="1000" max="1000000000" required>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Bảo hành (Tháng)</label>
+          <input type="number" ng-model="pr.product.bh" min="0" max="78" required>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Số lượng (cái)</label>
+          <input type="number" ng-model="pr.product.number" min="0" max="10000" required>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Khuyến mãi (%)</label>
+          <input type="number" ng-model="pr.product.km" min="0" max="100" required>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Thông số kỹ thuật</label>
+        <textarea class="product-input-detail" ng-model="pr.product.detail" md-maxlength="500" rows="5" md-select-on-focus required>
+
+        </textarea>
+        </md-input-container>
+
+        <label>Hình ảnh: </label>
+        <div flex layout="row">
+          <md-card flex="30" layout="row" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-repeat="image in pr.images">
+            <div layout="column" layout-align="center center" class="md-media-sm card-media"><img class="md-media-sm card-media" src="{{image.url}}"></div>
+            <div layout="column" layout-align="center center">
+              <md-button ng-click="pr.deleteByName($index, image)" class="md-icon-button" aria-label="Delete">
+                <md-icon md-svg-icon="../../assets/images/ic_delete_black_24px.svg"></md-icon>
+              </md-button>
+            </div>
+          </md-card>
+        </div>
+        <md-input-container class="md-block">
+          <input type="file" id="file" name="file" accept="image/*" required>
+        </md-input-container>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="pr.addUser()" type="submit" class="md-raised md-primary">Thêm sản phẩm</md-button>
+      <md-button ng-click="pr.backHome()" class="md-raised md-primary">Trở về</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

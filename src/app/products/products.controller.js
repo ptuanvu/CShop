@@ -9,7 +9,7 @@
     .controller('ProductsController', ProductsController);
 
   /** @ngInject */
-  function ProductsController($location) {
+  function ProductsController($location, $timeout) {
     var vm = this;
     vm.product = {};
     vm.types = ['Over Ear', 'In Ear', 'Ear Bud', 'Clip On'];
@@ -55,10 +55,15 @@
       });
       vm.product.images = eimages;
       var newPostKey = database.ref().child('products').push().key;
+      vm.product.pid = newPostKey;
       var updates = {};
       updates['/products/' + newPostKey] = vm.product;
-      return database.ref().update(updates);
-      console.log(JSON.parse(updates));
+      var respone = database.ref().update(updates);
+      vm.product = {};
+      vm.images = [];
+      console.log(JSON.parse(respone));
+
+
       //updates['/products/' +  + '/' + newPostKey] = vm.product;
     }
     function handleFileSelect(evt) {
@@ -75,25 +80,28 @@
 
       // Listen for errors and completion of the upload.
       // [START oncomplete]
-      uploadTask.on('state_changed', null, function(error) {
-        // [START onfailure]
-        console.error('Upload failed:', error);
-        // [END onfailure]
-      }, function() {
-        console.log('Uploaded',uploadTask.snapshot.totalBytes,'bytes.');
-        console.log(uploadTask.snapshot.metadata);
-        var curl = uploadTask.snapshot.metadata.downloadURLs[0];
-        var cname = uploadTask.snapshot.metadata.fullPath;
-        console.log('File available at', curl);
-        // [START_EXCLUDE]
-        document.getElementById('linkbox').innerHTML = '<a href="' +  curl + '">Click For File</a>';
-        vm.images.push({name:cname, url: curl});
-        // [END_EXCLUDE]
-      });
+
+        uploadTask.on('state_changed', null, function(error) {
+          // [START onfailure]
+          console.error('Upload failed:', error);
+          // [END onfailure]
+        }, function() {
+          console.log('Uploaded',uploadTask.snapshot.totalBytes,'bytes.');
+          console.log(uploadTask.snapshot.metadata);
+          var curl = uploadTask.snapshot.metadata.downloadURLs[0];
+          var cname = uploadTask.snapshot.metadata.fullPath;
+          console.log('File available at', curl);
+          // [START_EXCLUDE]
+          document.getElementById('linkbox').innerHTML = '<a href="' +  curl + '">Click For File</a>';
+          vm.images.push({name:cname, url: curl});
+          // [END_EXCLUDE]
+        });
+
+
       // [END oncomplete]
     }
 
-    window.onload = function() {
+    function active() {
       document.getElementById('file').addEventListener('change', handleFileSelect, false);
       document.getElementById('file').disabled = true;
 
@@ -105,10 +113,14 @@
         console.error('Anonymous Sign In Error', error);
       });
     }
+
+    active();
+
+
+
+
+
   }
 
-
-
-
-
 })();
+
