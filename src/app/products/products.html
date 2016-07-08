@@ -5,6 +5,7 @@
     </div>
     <div layout="row" layout-align="center top">
       <md-card flex class="md-inline-form" layout-fill>
+        <span id="linkbox"></span>
         <form class="product-editable-form">
           <md-input-container class="md-block">
             <label>Tên sản phẩm</label>
@@ -41,7 +42,7 @@
           <label>Hình ảnh: </label>
           <md-input-container class="md-block">
 
-            <input type="file" ng-model="user.address">
+            <input type="file" id="file" name="file">
           </md-input-container>
 
           <md-input-container class="md-block">
@@ -53,6 +54,7 @@
           </md-input-container>
 
         </form>
+
       </md-card>
     </div>
 
