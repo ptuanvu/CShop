@@ -20,12 +20,12 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body layout="column" ng-cloak flex>
+  <body ng-controller="IndexController as index" layout="column" ng-cloak flex>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <md-toolbar ng-controller="IndexController as index" layout="row" class="md-tall" layout-align="center end">
+    <md-toolbar layout="row" class="md-tall" layout-align="center end">
       <div flex class="md-toolbar-tools">
         <md-button class="md-icon-button md-accent" aria-label="Settings" hide-gt-md>
           <md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
@@ -39,14 +39,23 @@
           <md-menu md-offset="0 50" class="groupX middle">
             <md-button ng-click="index.openMenu($mdOpenMenu, $event)">Sản Phẩm</md-button>
             <md-menu-content class="heading-menu" width="4">
-              <md-menu-item ng-repeat="type in index.types">
-                <md-button>{{ type }}</md-button>
+              <md-menu-item>
+                <md-button ng-click="index.goToPage('/shows/overear')">Over Ear</md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="index.goToPage('/shows/earbud')">Ear Bud</md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="index.goToPage('/shows/inear')">In Ear</md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="index.goToPage('/shows/clipon')">Clip On</md-button>
               </md-menu-item>
             </md-menu-content>
           </md-menu>
 
 
-          <md-button class="groupX middle">Thanh Toán</md-button>
+          <md-button class="groupX middle" ng-click="index.goToPage('/tai_khoan_ngan_hang')">Thanh Toán</md-button>
           <md-button class="groupX right" ng-click="index.openContactPage()">Liên Hệ</md-button>
 
         </section>
@@ -57,11 +66,11 @@
     <div layout="row" layout-fill>
       <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2 md-raised md-primary" md-component-id="left"
                   md-is-locked-open="$mdMedia('gt-md')">
-        <md-content class="md-raised md-primary" layout="column" layout-fill>
-          <md-button class="md-raised md-primary san-pham">Tất cả sản phẩm</md-button>
-          <md-button class="md-raised md-primary san-pham-moi">Sản phẩm mới</md-button>
-          <md-button class="md-raised md-primary san-pham-hot">Sản phẩm hot</md-button>
-          <md-button class="md-raised md-primary san-pham-sale-off">Sản phẩm giảm giá</md-button>
+        <md-content layout="column" layout-fill>
+          <md-button class="md-raised md-primary san-pham" ng-click="index.goToPage('/shows/all')">Tất cả sản phẩm</md-button>
+          <md-button class="md-raised md-primary san-pham-moi" ng-click="index.goToPage('/shows/all')">Sản phẩm mới</md-button>
+          <md-button class="md-raised md-primary san-pham-hot" ng-click="index.goToPage('/shows/hot')">Sản phẩm hot</md-button>
+          <md-button class="md-raised md-primary san-pham-sale-off" ng-click="index.goToPage('/shows/sales')">Sản phẩm giảm giá</md-button>
         </md-content>
       </md-sidenav>
 

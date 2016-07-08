@@ -45,6 +45,12 @@
       .state('co_hoi_nghe_nghiep', {
         url: '/co_hoi_nghe_nghiep',
         templateUrl: 'app/single_pages/co_hoi_nghe_nghiep.html'
+      })
+      .state('shows', {
+        url: '/shows/:catalogID',
+        templateUrl: 'app/shows/shows.html',
+        controller: 'ShowsController',
+        controllerAs: 'shows'
       });
 
     $urlRouterProvider.otherwise('/');

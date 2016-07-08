@@ -9,7 +9,7 @@
     .controller('ProductsController', ProductsController);
 
   /** @ngInject */
-  function ProductsController($location, $timeout) {
+  function ProductsController($location, $timeout, $rootScope) {
     var vm = this;
     vm.product = {};
     vm.types = ['Over Ear', 'In Ear', 'Ear Bud', 'Clip On'];
@@ -20,12 +20,14 @@
       storageBucket: "doancuoiki-64efd.appspot.com"
     };
 
-    firebase.initializeApp(config);
+    if ($rootScope.c == null) {
+      firebase.initializeApp(config);
+      $rootScope.c = "2";
+    }
     var auth = firebase.auth();
     var storageRef = firebase.storage().ref();
 
     var database = firebase.database();
-    console.log(database);
 
     vm.images = [];
 

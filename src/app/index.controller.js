@@ -9,11 +9,17 @@
     .controller('IndexController', IndexController);
 
   /** @ngInject */
-  function IndexController($location) {
+  function IndexController($location, $rootScope) {
     var vm = this;
     vm.types = ['Over Ear', 'In Ear', 'Ear Bud', 'Clip On'];
-    vm.openMenu = function($mdOpenMenu, ev) {
+    $rootScope.cart = [];
 
+    vm.addToCart = function(pr) {
+      var cart_item = "";
+      $rootScope.cart;
+    }
+
+    vm.openMenu = function($mdOpenMenu, ev) {
       $mdOpenMenu(ev);
     };
     vm.openHome = function () {
@@ -22,6 +28,10 @@
     }
     vm.openContactPage = function () {
       $location.path("/contacts");
+      $location.replace();
+    }
+    vm.goToPage = function (url) {
+      $location.path(url);
       $location.replace();
     }
   }

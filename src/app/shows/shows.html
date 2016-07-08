@@ -1,0 +1,34 @@
+<div layout="row" layout-wrap>
+  <md-card ng-repeat="product in shows.products" flex-order="30" class="" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline home-preview-title">{{product.name}}</span>
+        <span class="md-subhead home-preview-subtitle">{{product.price}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content layout="row" layout-align="space-between">
+      <div class="md-media-xl home-preview-image card-media">
+        <img class="md-card-image home-preview-image md-media-xl" ng-src="{{product.images[0].url}}" />
+      </div>
+
+      <div layout="column">
+        <form >
+          <md-input-container class="home-preview-chooser">
+            <label>Số lượng</label>
+            <input type="number" ng-model="user.title" required>
+          </md-input-container>
+        </form>
+      </div>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button class="md-fab md-warn home-preview-cart-button" aria-label="Thêm vào giỏ hàng">
+        <md-icon class="home-preview-cart" md-svg-icon="assets/images/ic_add_shopping_cart_black_48px.svg"></md-icon>
+      </md-button>
+
+      <md-button class="md-fab md-primary home-preview-cart-button" aria-label="Xem chi tiết">
+        <md-icon class="home-preview-cart" md-svg-icon="assets/images/ic_details_black_24px.svg"></md-icon>
+      </md-button>
+
+    </md-card-actions>
+  </md-card>
+</div>
