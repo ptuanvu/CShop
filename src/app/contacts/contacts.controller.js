@@ -10,7 +10,7 @@
 
   /** @ngInject */
   function ContactsController($timeout) {
-    var vm = this;
+
 
 
 

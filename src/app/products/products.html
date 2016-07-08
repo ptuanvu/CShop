@@ -3,52 +3,75 @@
     <div layout="row" layout-align="center top">
       <h2>THÊM SẢN PHẨM</h2>
     </div>
+
+
     <div layout="row" layout-align="center top">
       <md-card flex class="md-inline-form" layout-fill>
         <span id="linkbox"></span>
         <form class="product-editable-form">
           <md-input-container class="md-block">
             <label>Tên sản phẩm</label>
-            <input ng-model="product.name">
+            <input ng-model="pr.product.name">
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Nhà sản xuất:</label>
+            <input ng-model="pr.product.nsx" required>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Loại sản phẩm:</label>
+            <md-select ng-model="pr.product.type" required>
+              <md-option ng-repeat="type in pr.types" value="{{type}}">{{type}}</md-option>
+            </md-select>
           </md-input-container>
 
           <md-input-container class="md-block">
             <label>Giá bán (VNĐ)</label>
-            <input type="number" ng-model="product.price">
+            <input type="number" ng-model="pr.product.price" required>
           </md-input-container>
 
           <md-input-container class="md-block">
             <label>Bảo hành (Tháng)</label>
-            <input type="number" ng-model="product.bh">
+            <input type="number" ng-model="pr.product.bh" required>
           </md-input-container>
 
           <md-input-container class="md-block">
             <label>Số lượng (cái)</label>
-            <input type="number" ng-model="product.number">
+            <input type="number" ng-model="pr.product.number" required>
           </md-input-container>
 
           <md-input-container class="md-block">
-            <label>Khuyến mãi</label>
-            <input ng-model="product.km">
+            <label>Khuyến mãi (%)</label>
+            <input type="number" ng-model="pr.product.km" required>
           </md-input-container>
 
           <md-input-container class="md-block">
             <label>Thông số kỹ thuật</label>
-        <textarea class="product-input-detail" ng-model="product.detail" md-maxlength="500" rows="5" md-select-on-focus>
+        <textarea class="product-input-detail" ng-model="pr.product.detail" md-maxlength="500" rows="5" md-select-on-focus required>
 
         </textarea>
           </md-input-container>
 
           <label>Hình ảnh: </label>
+          <div flex layout="row">
+            <md-card flex="30" layout="row" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-repeat="image in pr.images">
+              <div layout="column" layout-align="center center" class="md-media-sm card-media"><img class="md-media-sm card-media" src="{{image.url}}"></div>
+              <div layout="column" layout-align="center center">
+                <md-button ng-click="pr.deleteByName($index, image)" class="md-icon-button" aria-label="Delete">
+                  <md-icon md-svg-icon="../../assets/images/ic_delete_black_24px.svg"></md-icon>
+                </md-button>
+              </div>
+            </md-card>
+          </div>
           <md-input-container class="md-block">
-
-            <input type="file" id="file" name="file">
+            <input type="file" id="file" name="file" required>
           </md-input-container>
 
           <md-input-container class="md-block">
             <div layout="row" layout-align="center end">
-              <md-button flex="50" class="md-raised md-primary">Thêm sản phẩm</md-button>
-              <md-button flex="50" class="md-raised md-primary">Trở về</md-button>
+              <md-button ng-click="pr.addUser()" type="submit" flex="50" class="md-raised md-primary">Thêm sản phẩm</md-button>
+              <md-button ng-click="pr.backHome()" flex="50" class="md-raised md-primary">Trở về</md-button>
             </div>
 
           </md-input-container>

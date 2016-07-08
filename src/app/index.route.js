@@ -28,23 +28,23 @@
       })
       .state('aboutme', {
         url: '/aboutme',
-        templateUrl: 'app/single_pages/about_me.html',
+        templateUrl: 'app/single_pages/about_me.html'
       })
       .state('doi_tra_hang', {
         url: '/doi_tra_hang',
-        templateUrl: 'app/single_pages/doi_tra_hang.html',
+        templateUrl: 'app/single_pages/doi_tra_hang.html'
       })
       .state('tai_khoan_ngan_hang', {
         url: '/tai_khoan_ngan_hang',
-        templateUrl: 'app/single_pages/tai_khoan_ngan_hang.html',
+        templateUrl: 'app/single_pages/tai_khoan_ngan_hang.html'
       })
       .state('the_khach_hang', {
         url: '/the_khach_hang',
-        templateUrl: 'app/single_pages/the_khach_hang.html',
+        templateUrl: 'app/single_pages/the_khach_hang.html'
       })
       .state('co_hoi_nghe_nghiep', {
         url: '/co_hoi_nghe_nghiep',
-        templateUrl: 'app/single_pages/co_hoi_nghe_nghiep.html',
+        templateUrl: 'app/single_pages/co_hoi_nghe_nghiep.html'
       });
 
     $urlRouterProvider.otherwise('/');
