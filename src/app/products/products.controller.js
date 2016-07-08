@@ -11,6 +11,6 @@
   /** @ngInject */
   function ProductsController() {
     var vm = this;
-
+  
   }
 })();
