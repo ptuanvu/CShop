@@ -34,10 +34,13 @@
       </div>
       <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="80" layout="row" layout-align="center end">
         <section layout="row" layout-padding>
-          <md-button class="groupX left" ng-click="index.openHome()">Trang Chủ</md-button>
           <md-menu md-offset="0 50" class="groupX left">
+            <md-button class="groupX left" ng-click="index.openHome()">Trang Chủ</md-button>
+          </md-menu>
+
+          <md-menu md-offset="0 50" class="groupX middle">
             <md-button class="groupX middle" ng-click="index.openMenu($mdOpenMenu, $event)">Sản Phẩm</md-button>
-            <md-menu-content class="md-raised md-primary heading-menu" width="4">
+            <md-menu-content class="heading-menu" width="4">
               <md-menu-item>
                 <md-button>Tất cả sản phẩm</md-button>
               </md-menu-item>
@@ -50,9 +53,14 @@
             </md-menu-content>
           </md-menu>
 
+          <md-menu md-offset="0 50" class="groupX middle">
+            <md-button class="groupX middle">Thanh Toán</md-button>
+          </md-menu>
 
-          <md-button class="groupX middle">Thanh Toán</md-button>
-          <md-button ng-click="index.openContactPage()" class="groupX right">Liên Hệ</md-button>
+          <md-menu md-offset="0 50" class="groupX right">
+            <md-button ng-click="index.openContactPage()" class="groupX right">Liên Hệ</md-button>
+          </md-menu>
+
         </section>
       </div>
 
