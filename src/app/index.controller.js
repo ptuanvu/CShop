@@ -9,18 +9,18 @@
     .controller('IndexController', IndexController);
 
   /** @ngInject */
-  function IndexController($location, $mdDialog) {
+  function IndexController($location) {
     var vm = this;
-    var originatorEv;
-    this.openMenu = function($mdOpenMenu, ev) {
-      originatorEv = ev;
+
+    vm.openMenu = function($mdOpenMenu, ev) {
+
       $mdOpenMenu(ev);
     };
-    this.openHome = function () {
+    vm.openHome = function () {
       $location.path("/");
       $location.replace();
     }
-    this.openContactPage = function () {
+    vm.openContactPage = function () {
       $location.path("/contacts");
       $location.replace();
     }
