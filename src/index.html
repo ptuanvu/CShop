@@ -25,7 +25,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <md-toolbar layout="row" class="md-tall" layout-align="center end">
+    <md-toolbar ng-controller="IndexController as index" layout="row" class="md-tall" layout-align="center end">
       <div flex class="md-toolbar-tools">
         <md-button class="md-icon-button md-accent" aria-label="Settings" hide-gt-md>
           <md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
@@ -34,10 +34,25 @@
       </div>
       <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="80" layout="row" layout-align="center end">
         <section layout="row" layout-padding>
-          <md-button class="groupX left">Trang Chủ</md-button>
-          <md-button class="groupX middle">Sản Phẩm</md-button>
+          <md-button class="groupX left" ng-click="index.openHome()">Trang Chủ</md-button>
+          <md-menu md-offset="0 50" class="groupX left">
+            <md-button class="groupX middle" ng-click="index.openMenu($mdOpenMenu, $event)">Sản Phẩm</md-button>
+            <md-menu-content class="md-raised md-primary heading-menu" width="4">
+              <md-menu-item>
+                <md-button>Tất cả sản phẩm</md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button>Sản phẩm mới</md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button>Sản phẩm hot</md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+
+
           <md-button class="groupX middle">Thanh Toán</md-button>
-          <md-button class="groupX right">Liên Hệ</md-button>
+          <md-button ng-click="index.openContactPage()" class="groupX right">Liên Hệ</md-button>
         </section>
       </div>
 
@@ -63,7 +78,28 @@
       </div>
     </div>
 
+    <md-toolbar ng-controller="IndexController as index" layout="row" class="md-tall" layout-align="center end">
+      <div flex="20">
+        <section  class="bottom-contact-info" layout="column" layout-padding>
+          <a href="/aboutme">Về chúng tôi</a>
+          <a href="/doi_tra_hang">Chính sách đổi trả hàng</a>
+          <a href="/tai_khoan_ngan_hang">Tài khoản ngân hàng</a>
+          <a href="/co_hoi_nghe_nghiep">Cơ hội nghề nghiệp</a>
+          <a href="/the_khach_hang">Thẻ khách hàng thân thiết</a>
+        </section>
+      </div>
+      <div flex layout="row" layout-align="center end">
+        <section class="bottom-contact-info" layout="row" layout-padding>
+          <p><strong>Thông tin liên hệ</strong><br>
 
+            Hotline bán hàng: 1900 636 012<br>
+            Email: sales@tainghe.com.vn<br>
+            Khiếu nại dịch vụ: 0982822260 <br>
+            Email: info@tainghe.com.vn</p>
+        </section>
+      </div>
+
+    </md-toolbar>
 
 
     <!-- build:js(src) scripts/vendor.js -->

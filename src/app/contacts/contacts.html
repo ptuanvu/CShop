@@ -1,0 +1,35 @@
+<div flex layout="column">
+  <style>
+    #map {
+      height: 400px;
+    }
+    #map2 {
+      height: 400px;
+    }
+  </style>
+  <md-tabs md-dynamic-height md-border-bottom>
+    <md-tab  label="Hà Nội" ng-click="ct.initHNMap('map')">
+      <div flex-order-gt-sm="70" id="map"></div>
+      <div class="address-contact-content" flex layout="column" layout-align="center center">
+        <h2>Địa chỉ: Cửa hàng Xuân Vũ Hà Nội</h2>
+        <p>165 Láng Hạ , Đống Đa, Hà Nội. </p>
+        <p>ĐT: 04 73006262 nhánh 1 | 0973 953 333</p>
+        <p>ĐT: 04 73006262 nhánh 2 | 0985 115 466</p>
+      </div>
+
+    </md-tab>
+    <md-tab label="Hồ Chí Minh" ng-click="ct.initHCMMap('map2')">
+
+      <div flex-order-gt-sm="70" id="map2"></div>
+      <div class="address-contact-content"  flex layout="column" layout-align="center center">
+        <h2>Địa chỉ: Cửa hàng Xuân Vũ TP Hồ Chí Minh </h2>
+        <p>98 Cao Thắng, Ho Chi Minh City, Ho Chi Minh, Vietnam</p>
+        <p>ĐT: 08 73006265 | 0985 118 466</p>
+      </div>
+
+    </md-tab>
+  </md-tabs>
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgQ35qazgOASubWDnjO4wHd_jYDAkUfOU&callback=initMap">
+  </script>
+</div>
