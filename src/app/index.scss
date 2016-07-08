@@ -266,6 +266,15 @@ section.jumbotron {
 .page-content {
   display: block;
 }
+.bottom-contact-info {
+  font-size: 13px;
+  text-align: center;
+}
+
+.bottom-contact-info a {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
 
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject
