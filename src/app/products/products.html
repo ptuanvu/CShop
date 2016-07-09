@@ -1,18 +1,19 @@
-<div flex="grow" layout="column" layout-align="center center">
+<div ng-show="user" flex="grow" layout="column" layout-align="center center">
 
   <div class="table-products" flex layout-fill layout="column">
     <div layout="row" layout-fill>
       <div flex="30"><strong>Tên sản phẩm</strong></div>
       <div flex="20"><strong>Nhà sản xuất</strong></div>
-      <div flex="15"><strong>Còn hàng</strong></div>
-      <div flex="15"><strong>Hot</strong></div>
+      <div flex="10"><strong>Còn hàng</strong></div>
+      <div flex="10"><strong>Hot</strong></div>
       <div flex><strong>Operations</strong></div>
     </div>
-    <div layout="row" layout-fill ng-repeat="product in pr.products | startFrom: (pr.currentPage*pr.pageSize) | limitTo: pr.pageSize">
+    <div layout="row" layout-fill
+         ng-repeat="product in pr.products | startFrom: (pr.currentPage*pr.pageSize) | limitTo: pr.pageSize">
       <div flex="30">{{product.name}}</div>
       <div flex="20">{{product.nsx}}</div>
-      <div flex="15">{{product.number}}</div>
-      <div flex="15"><input type="checkbox" ng-change="pr.makeItHot(product)" ng-model="product.ishot"></div>
+      <div flex="10">{{product.number}}</div>
+      <div flex="10"><input type="checkbox" ng-change="pr.makeItHot(product)" ng-model="product.ishot"></div>
       <div flex>
         <md-button ng-click="pr.updateProduct(product)" class="md-raised md-primary">Edit</md-button>
         <md-button ng-click="pr.deleteProduct(product)" class="md-raised md-primary">Delete</md-button>
@@ -20,8 +21,12 @@
 
     </div>
     <div layout="row" layout-align="center center" layout-fill>
-      <md-button ng-hide="pr.currentPage < 1" ng-click="pr.currentPage = pr.currentPage < 1 ? 0 : pr.currentPage - 1" class="md-raised md-primary">Pre</md-button>
-      <md-button ng-click="pr.currentPage = pr.currentPage + 1" ng-hide="pr.currentPage >= pr.totalPage" class="md-raised md-primary">Next</md-button>
+      <md-button ng-hide="pr.currentPage < 1" ng-click="pr.currentPage = pr.currentPage < 1 ? 0 : pr.currentPage - 1"
+                 class="md-raised md-primary">Pre
+      </md-button>
+      <md-button ng-click="pr.currentPage = pr.currentPage + 1" ng-hide="pr.currentPage >= pr.totalPage"
+                 class="md-raised md-primary">Next
+      </md-button>
     </div>
 
     <div layout="row" layout-fill layout-align="center top">
@@ -112,5 +117,13 @@
       </md-card>
     </div>
 
-
   </div>
+
+</div>
+
+<div ng-show="!user" flex="grow" layout="row" layout-align="center center">
+
+  <div layout="column" layout-align="center center" class="md-media-sm card-media">
+    <img class="md-media-sm card-media" ng-src="../../assets/images/a.jpg">
+  </div>
+</div>

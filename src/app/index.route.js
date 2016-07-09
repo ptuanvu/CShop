@@ -20,6 +20,12 @@
         controller: 'ProductsController',
         controllerAs: 'pr'
       })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'app/login/login.html',
+        controller: 'LoginController',
+        controllerAs: 'login'
+      })
       .state('contacts', {
         url: '/contacts',
         templateUrl: 'app/contacts/contacts.html',
