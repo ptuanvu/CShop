@@ -47,7 +47,7 @@
 
 
           $timeout(function () {
-            if (user.email == 'vu159951@gmail.com') {
+            if (user.email == 'vu159951@gmail.com' || user.email == 'ptvu.it@gmail.com') {
               $location.path("/products");
               $location.replace();
             } else {
