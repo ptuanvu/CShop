@@ -20,7 +20,7 @@
       storageBucket: "doancuoiki-64efd.appspot.com"
     };
 
-    if ($rootScope.c == null) {
+    if ( $rootScope.c == null) {
       firebase.initializeApp(config);
       $rootScope.c = "2";
     }

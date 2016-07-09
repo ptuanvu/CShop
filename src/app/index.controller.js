@@ -47,6 +47,10 @@
       $location.path("/contacts");
       $location.replace();
     }
+    vm.openLoginPage = function () {
+      $location.path("/login");
+      $location.replace();
+    }
     vm.goToPage = function (url) {
       $location.path(url);
       $location.replace();
