@@ -33,7 +33,6 @@
 
     vm.deleteByName = function (index,image) {
       var desertRef = storageRef.child(image.name);
-      console.log(index);
       vm.images.splice(index, 1);
 
       desertRef.delete().then(function() {
@@ -45,44 +44,111 @@
     }
 
     vm.backHome = function () {
-      $location.path("/");
-      $location.replace();
+      vm.product = [];
+      vm.images = [];
+    }
+
+    function copyPr(apr) {
+      var npr = {};
+      npr.name = apr.name;
+      npr.images = apr.images;
+      npr.bh = apr.bh;
+      npr.ishot = apr.ishot;
+      npr.km = apr.km;
+      npr.pid = apr.pid;
+      npr.nsx = apr.nsx;
+      npr.price = apr.price;
+      npr.type = apr.type;
+      npr.detail = apr.detail;
+      npr.number = apr.number;
+      return npr;
+    }
+
+    vm.makeItHot = function (cpr) {
+      var cp = firebase.database().ref('products/' + cpr.pid);
+      cpr = copyPr(cpr);
+      cp.update(cpr);
     }
 
     vm.addUser = function () {
+
       var eimages = [];
       vm.images.forEach(function (item, index) {
         var cimg = {name: encodeURI(item.name), url: encodeURI(item.url)};
         eimages.push(cimg);
       });
-      vm.product.images = eimages;
-      var newPostKey = database.ref().child('products').push().key;
-      vm.product.pid = newPostKey;
-      var updates = {};
-      updates['/products/' + newPostKey] = vm.product;
-      var respone = database.ref().update(updates);
-      vm.product = {};
+      vm.product = copyPr(vm.product);
+      //vm.product.images = eimages;
+
+      if ( typeof vm.product.pid != 'undefined') {
+        var newPostKey =  vm.product.pid;
+        var updates = {};
+        updates['/products/' + newPostKey] = vm.product;
+        var respone = database.ref().update(updates);
+      } else {
+        var newPostKey = database.ref().child('products').push().key;
+        vm.product.pid = newPostKey;
+        var updates = {};
+        updates['/products/' + newPostKey] = vm.product;
+        var respone = database.ref().update(updates);
+      }
+
+
+      vm.product = [];
       vm.images = [];
       console.log(JSON.parse(respone));
-
-
       //updates['/products/' +  + '/' + newPostKey] = vm.product;
     }
+
+    vm.products = [];
+    var allProduct = firebase.database().ref('products').limitToLast(100);
+    var fetchPosts = function (postsRef) {
+      postsRef.on('child_added', function (data) {
+        var pr = data.val();
+        var imgs = [];
+        pr.images.forEach(function (item, index) {
+          var image = {name: decodeURI(item.name), url: decodeURI(item.url)};
+          imgs.push(image);
+        });
+        pr.images = imgs;
+        vm.products.push(pr);
+      });
+    };
+    fetchPosts(allProduct);
+    $timeout(function () {
+      vm.products = vm.products;
+    }, 3000);
+
+    vm.updateProduct = function (cproduct) {
+      vm.product = [];
+      vm.images = [];
+      vm.product = cproduct;
+      cproduct.images.forEach(function (item, index) {
+        var image = {name: decodeURI(item.name), url: item.url};
+        vm.images.push(image);
+      });
+    }
+    vm.deleteProduct = function (cproduct) {
+      var cp = firebase.database().ref('products/' + cproduct.pid);
+      cp.remove();
+      vm.products = [];
+      fetchPosts(allProduct);
+      $timeout(function () {
+        vm.products = vm.products;
+      }, 3000);
+    }
+
     function handleFileSelect(evt) {
       evt.stopPropagation();
       evt.preventDefault();
       var file = evt.target.files[0];
-
       var metadata = {
         'contentType': file.type
       };
-
       // Push to child path.
       var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
-
       // Listen for errors and completion of the upload.
       // [START oncomplete]
-
         uploadTask.on('state_changed', null, function(error) {
           // [START onfailure]
           console.error('Upload failed:', error);
@@ -98,8 +164,6 @@
           vm.images.push({name:cname, url: curl});
           // [END_EXCLUDE]
         });
-
-
       // [END oncomplete]
     }
 

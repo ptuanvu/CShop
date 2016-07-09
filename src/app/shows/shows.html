@@ -3,7 +3,7 @@
     <md-card-title>
       <md-card-title-text>
         <span class="md-headline home-preview-title">{{product.name}}</span>
-        <span class="md-subhead home-preview-subtitle">{{product.price}}</span>
+        <span class="md-subhead home-preview-subtitle">{{product.price}} VNĐ</span>
       </md-card-title-text>
     </md-card-title>
     <md-card-content layout="row" layout-align="space-between">
@@ -15,13 +15,13 @@
         <form >
           <md-input-container class="home-preview-chooser">
             <label>Số lượng</label>
-            <input type="number" ng-model="user.title" required>
+            <input type="number" ng-model="values">
           </md-input-container>
         </form>
       </div>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
-      <md-button class="md-fab md-warn home-preview-cart-button" aria-label="Thêm vào giỏ hàng">
+      <md-button ng-click="index.addToCart(values, product)" class="md-fab md-warn home-preview-cart-button" aria-label="Thêm vào giỏ hàng">
         <md-icon class="home-preview-cart" md-svg-icon="assets/images/ic_add_shopping_cart_black_48px.svg"></md-icon>
       </md-button>
 

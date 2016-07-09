@@ -14,9 +14,26 @@
     vm.types = ['Over Ear', 'In Ear', 'Ear Bud', 'Clip On'];
     $rootScope.cart = [];
 
-    vm.addToCart = function(pr) {
-      var cart_item = "";
-      $rootScope.cart;
+    vm.addToCart = function(number, pr) {
+
+      var count = 0;
+      $rootScope.cart.forEach(function (item, index) {
+        if (item.product.pid == pr.pid) {
+          if (angular.isUndefinedOrNull(number)){
+            number = 0;
+          }
+          item.num = number;
+          count++;
+        }
+        console.log(item.product.pid);
+      });
+      var cart_item = {num: number, product: pr};
+      if (count == 0) {
+        if (angular.isUndefinedOrNull(number)){
+          number = 1;
+        }
+        $rootScope.cart.push(cart_item);
+      }
     }
 
     vm.openMenu = function($mdOpenMenu, ev) {

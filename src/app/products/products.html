@@ -1,13 +1,31 @@
-<div flex="grow" layout="row" layout-align="center center">
+<div flex="grow" layout="column" layout-align="center center">
+
+  <div class="table-products" flex layout-fill layout="column">
+    <div layout="row" layout-fill>
+      <div flex="30"><strong>Tên sản phẩm</strong></div>
+      <div flex="20"><strong>Nhà sản xuất</strong></div>
+      <div flex="15"><strong>Còn hàng</strong></div>
+      <div flex="15"><strong>Hot</strong></div>
+      <div flex><strong>Operations</strong></div>
+    </div>
+    <div layout="row" layout-fill ng-repeat="product in pr.products">
+      <div flex="30">{{product.name}}</div>
+      <div flex="20">{{product.nsx}}</div>
+      <div flex="15">{{product.number}}</div>
+      <div flex="15"><input type="checkbox" ng-change="pr.makeItHot(product)" ng-model="product.ishot"></div>
+      <div flex>
+        <md-button ng-click="pr.updateProduct(product)" class="md-raised md-primary">Edit</md-button>
+        <md-button ng-click="pr.deleteProduct(product)" class="md-raised md-primary">Delete</md-button>
+    </div>
+  </div>
 
 
 
-  <div flex="50" layout="column" >
-    <div layout="row" layout-align="center top">
+    <div layout="row" layout-fill layout-align="center top">
       <h2>THÊM SẢN PHẨM</h2>
     </div>
 
-    <div layout="row" layout-align="center top">
+    <div flex="100" layout-fill layout="row" layout-align="center top">
       <md-card flex class="md-inline-form" layout-fill>
         <span id="linkbox"></span>
         <form class="product-editable-form">
@@ -72,13 +90,13 @@
             </md-card>
           </div>
           <md-input-container class="md-block">
-            <input type="file" id="file" name="file" accept="image/*" required>
+            <input type="file" id="file" name="file" accept="image/*">
           </md-input-container>
 
           <md-input-container class="md-block">
             <div layout="row" layout-align="center end">
-              <md-button ng-click="pr.addUser()" type="submit" flex="50" class="md-raised md-primary">Thêm sản phẩm</md-button>
-              <md-button ng-click="pr.backHome()" flex="50" class="md-raised md-primary">Trở về</md-button>
+              <md-button ng-click="pr.addUser()" type="submit" flex="50" class="md-raised md-primary">Lưu sản phẩm</md-button>
+              <md-button ng-click="pr.backHome()" flex="50" class="md-raised md-primary">Reset</md-button>
             </div>
 
           </md-input-container>
@@ -88,6 +106,5 @@
       </md-card>
     </div>
 
-  </div>
 
 </div>
