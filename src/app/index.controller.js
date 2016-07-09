@@ -19,17 +19,16 @@
       var count = 0;
       $rootScope.cart.forEach(function (item, index) {
         if (item.product.pid == pr.pid) {
-          if (angular.isUndefinedOrNull(number)){
-            number = 0;
-          }
-          item.num = number;
+          item.num = 1;
+          if (number != null)
+            item.num = number;
           count++;
         }
         console.log(item.product.pid);
       });
       var cart_item = {num: number, product: pr};
       if (count == 0) {
-        if (angular.isUndefinedOrNull(number)){
+        if (number == null){
           number = 1;
         }
         $rootScope.cart.push(cart_item);

@@ -26,11 +26,11 @@
     <![endif]-->
 
     <md-toolbar layout="row" class="md-tall" layout-align="center end">
-      <div flex class="md-toolbar-tools">
-        <md-button class="md-icon-button md-accent" aria-label="Settings" hide-gt-md>
+      <div flex="30" class="md-toolbar-tools">
+        <md-button  class="md-icon-button md-accent" aria-label="Settings" hide-gt-md>
           <md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
         </md-button>
-        <img class="md-toolbar-tools" src="assets/images/logo.png" hide-md hide-sm hide-xs>
+        <img ng-click="index.openHome()" class="md-toolbar-tools" src="assets/images/logo.png" hide-md hide-sm hide-xs>
       </div>
       <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="80" layout="row" layout-align="center end">
         <section layout="row" layout-padding>
@@ -60,6 +60,10 @@
 
         </section>
       </div>
+
+      <md-button ng-click="index.goToPage('/cart')" class="md-warn" aria-label="Giỏ hàng">
+        <md-icon class="home-preview-cart" md-svg-icon="assets/images/ic_shopping_cart_black_48px.svg"></md-icon>
+      </md-button>
 
     </md-toolbar>
 

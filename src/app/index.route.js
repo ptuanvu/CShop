@@ -57,6 +57,12 @@
         templateUrl: 'app/product_detail/product_detail.html',
         controller: 'DetailController',
         controllerAs: 'dt'
+      })
+      .state('cart', {
+        url: '/cart',
+        templateUrl: 'app/cart/cart.html',
+        controller: 'CartsController',
+        controllerAs: 'ct'
       });
 
     $urlRouterProvider.otherwise('/');

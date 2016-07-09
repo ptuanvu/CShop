@@ -1,0 +1,22 @@
+<div class="table-products" flex layout-fill layout="column">
+  <div layout="row" layout-fill>
+    <div flex="30"><strong>Tên sản phẩm</strong></div>
+    <div flex="20"><strong>Nhà sản xuất</strong></div>
+    <div flex="15"><strong>Số lượng</strong></div>
+    <div flex><strong>Operations</strong></div>
+  </div>
+
+  <div layout="row" layout-fill ng-repeat="cart in ct.carts">
+    <div flex="30">{{cart.product.name}}</div>
+    <div flex="20">{{cart.product.nsx}}</div>
+    <div flex="15">{{cart.num}}</div>
+    <div flex>
+      <md-button class="md-raised md-primary">Edit</md-button>
+      <md-button class="md-raised md-primary">Delete</md-button>
+    </div>a
+  </div>
+  <div layout="row" layout-align="center center" layout-fill>
+    <md-button ng-click="index.goToPage('/tai_khoan_ngan_hang')" class="md-raised md-primary">Thanh toán</md-button>
+    <md-button ng-click="index.openHome()" class="md-raised md-primary">Trang chủ</md-button>
+  </div>
+</div>
