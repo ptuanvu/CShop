@@ -11,6 +11,12 @@
   /** @ngInject */
   function ProductsController($location, $timeout, $rootScope) {
     var vm = this;
+    vm.currentPage = 0;
+    vm.pageSize = 10;
+    $timeout(function () {
+      vm.totalPage = parseInt(vm.products.length/vm.pageSize);
+    }, 3000);
+
     vm.product = {};
     vm.types = ['Over Ear', 'In Ear', 'Ear Bud', 'Clip On'];
     var config = {
@@ -71,7 +77,6 @@
     }
 
     vm.addUser = function () {
-
       var eimages = [];
       vm.images.forEach(function (item, index) {
         var cimg = {name: encodeURI(item.name), url: encodeURI(item.url)};
@@ -93,7 +98,6 @@
         var respone = database.ref().update(updates);
       }
 
-
       vm.product = [];
       vm.images = [];
       console.log(JSON.parse(respone));
@@ -101,7 +105,7 @@
     }
 
     vm.products = [];
-    var allProduct = firebase.database().ref('products').limitToLast(100);
+    var allProduct = firebase.database().ref('products');
     var fetchPosts = function (postsRef) {
       postsRef.on('child_added', function (data) {
         var pr = data.val();
@@ -131,6 +135,7 @@
     vm.deleteProduct = function (cproduct) {
       var cp = firebase.database().ref('products/' + cproduct.pid);
       cp.remove();
+      console.log("Delete");
       vm.products = [];
       fetchPosts(allProduct);
       $timeout(function () {
