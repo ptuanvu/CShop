@@ -9,7 +9,7 @@
     .controller('ShowsController', ShowsController);
 
   /** @ngInject */
-  function ShowsController($timeout, $stateParams, $rootScope) {
+  function ShowsController($timeout, $stateParams, $rootScope, $location) {
     var vm = this;
     vm.operation = $stateParams.catalogID;
     vm.currentPage = 0;
@@ -41,14 +41,25 @@
     vm.products = [];
     vm.aproducts = [];
 
-    var allProduct = firebase.database().ref('products').limitToLast(100);
+    var allProduct = firebase.database().ref('products');
+
     var fetchPosts = function (postsRef) {
       postsRef.on('child_added', function (data) {
         var pr = data.val();
-        pr.images[0].url = decodeURI(pr.images[0].url);
+        var imgs = [];
+        pr.images.forEach(function (item, index) {
+          var image = {name: decodeURI(item.name), url: decodeURI(item.url)};
+          imgs.push(image);
+        });
+        pr.images = imgs;
         vm.aproducts.push(pr);
       });
     };
+
+    vm.gotoDetail = function (pid) {
+      $location.path("/detail/" + pid);
+      $location.replace();
+    }
 
     if (vm.operation == 'all') {
       vm.products = [];

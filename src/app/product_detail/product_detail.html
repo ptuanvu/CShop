@@ -1,0 +1,28 @@
+<md-content class="md-padding" layout-align="center center" layout-xs="column" layout="row">
+
+  <div layout-align="center center" flex-xs flex-gt-xs="50" layout="column">
+    <md-card>
+      <img ng-src="{{dt.imagePath}}" class="md-card-image " alt="Image">
+    </md-card>
+
+    <div layout="row" flex>
+      <md-card ng-repeat="image in dt.pr.images" flex="20">
+        <img ng-click="dt.changeImagePreview(image.url)" ng-src="{{image.url}}" class="md-card-image " alt="Image">
+      </md-card>
+    </div>
+
+    <h3>{{dt.pr.name}}</h3>
+    <p>{{dt.pr.price.format()}} VNĐ</p>
+
+    <div layout="column" layout-align="left left">
+      <p><strong>NSX:</strong> <br>{{dt.pr.nsx}}</p>
+      <p><strong>Bảo hành:</strong> <br>{{dt.pr.bh}} tháng</p>
+      <p><strong>Khuyến mãi:</strong> <br>{{dt.pr.km}} %</p>
+      <p><strong>Loại: </strong> <br>{{dt.pr.t}}</p>
+      <p><strong>Mô tả:</strong> <br>{{dt.pr.detail}}</p>
+    </div>
+
+
+  </div>
+
+</md-content>

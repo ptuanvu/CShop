@@ -51,6 +51,12 @@
         templateUrl: 'app/shows/shows.html',
         controller: 'ShowsController',
         controllerAs: 'shows'
+      })
+      .state('detail', {
+        url: '/detail/:pid',
+        templateUrl: 'app/product_detail/product_detail.html',
+        controller: 'DetailController',
+        controllerAs: 'dt'
       });
 
     $urlRouterProvider.otherwise('/');
