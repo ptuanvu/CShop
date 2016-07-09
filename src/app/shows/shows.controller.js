@@ -12,6 +12,17 @@
   function ShowsController($timeout, $stateParams, $rootScope) {
     var vm = this;
     vm.operation = $stateParams.catalogID;
+    vm.currentPage = 0;
+    vm.pageSize = 6;
+    $timeout(function () {
+      vm.totalPage = parseInt(vm.products.length/vm.pageSize);
+      if (vm.totalPage*vm.pageSize == vm.products.length) vm.totalPage--;
+    }, 3000);
+
+    Number.prototype.format = function(n, x) {
+      var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+      return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
+    };
 
     var config = {
       apiKey: "AIzaSyDmwrDGBbkgHm8zP1Zd3uGY71nY9xSFVuA",

@@ -3,7 +3,8 @@
 
   angular
     .module('cshop')
-    .config(config);
+    .config(config)
+    .filter('startFrom', customfilter);
 
   /** @ngInject */
   function config($logProvider, toastrConfig) {
@@ -16,6 +17,13 @@
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
+  }
+
+  function customfilter() {
+    return function (input, start) {
+      start = +start;
+      return input.slice(start);
+    }
   }
 
 })();
